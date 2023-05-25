@@ -1,2 +1,41 @@
-# cosmetic-commerce-web-customer-backend
-Customer website for cosmetics shop
+# [Customer-Site-Backend] Cosmetics Shop
+
+
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://images-platform.99static.com/UERSKcoxp9lV8PIdu5WkiIxce8Y=/256x0:1019x763/500x500/top/smart/99designs-contests-attachments/86/86348/attachment_86348987" width="200" alt="Nest Logo" /></a>
+</p>
+
+## Description
+Customer Site API Endpoints for cosmetic selling websites
+
+## Technologies
+- **[NestJS](https://nestjs.com/)** : A progressive Node.js framework for building efficient, reliable and scalable server-side applications
+- **[Typesript](https://www.typescriptlang.org/)** :JavaScript With Syntax For Types
+- **[MongoDB](https://www.mongodb.com)** : MongoDB object data modeling using [Typegoose](https://typegoose.github.io/typegoose/)
+- **[JWT](https://jwt.io/)** for Role-based authorization
+## Installation
+
+```bash
+$ npm install
+```
+## Config .env file
+```bash
+# copy the .env template file and config with its example
+$ cp .env.template .env
+```
+
+## Running the app
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+```
+## License
+
+This project is [MIT licensed](LICENSE).
