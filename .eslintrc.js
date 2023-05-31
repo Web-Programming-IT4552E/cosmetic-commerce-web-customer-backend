@@ -28,5 +28,6 @@ module.exports = {
     'camelcase': 'off',
     'import/prefer-default-export': 'off',
     'prettier/prettier': 'warn',
+    '@typescript-eslint/no-inferrable-types':'off'
   },
 };
