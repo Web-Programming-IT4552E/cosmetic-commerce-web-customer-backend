@@ -1,21 +1,15 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber, IsNotEmpty } from 'class-validator';
+import { IsOptional, IsString } from 'class-validator';
+import { PaginationQueryDto } from 'src/common/dtos/paginationQuery.dto';
 
-export class PaginationQueryDto {
+export class getListProductsQueryDto extends PaginationQueryDto {
   @ApiProperty({
-    description: 'number of page',
-    type: Number,
+    name: 'name',
+    description: 'filter with name of the product',
+    required: false,
   })
-  @IsNumber()
-  @IsNotEmpty()
-  public page: number = 1;
-
-  @ApiProperty({
-    description: 'number of items per page',
-    type: Number,
-  })
-  @IsNumber()
-  @IsNotEmpty()
-  public limit: number = 1;
+  @IsOptional()
+  @IsString()
+  name: string;
 }
