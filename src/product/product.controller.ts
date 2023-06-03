@@ -9,7 +9,6 @@ export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @ApiOperation({ description: 'Get product list' })
-
   @Get('')
   async getProductList(@Query() getListProductQuery: getListProductsQueryDto) {
     return this.productService.getAllProducts(getListProductQuery);
