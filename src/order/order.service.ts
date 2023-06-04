@@ -4,6 +4,7 @@ import { ProductService } from '../product/product.service';
 import { CreateOrderDto } from './dtos/create-order.dto';
 import { OrderRepository } from './order.repository';
 import { OrderProduct } from './schemas/order-product.schema';
+import { MailService } from '../mailer/mail.service';
 
 @Injectable()
 export class OrderService {
@@ -11,11 +12,13 @@ export class OrderService {
     private readonly orderRepository: OrderRepository,
     private readonly areaService: AreaService,
     private readonly productService: ProductService,
+    private readonly mailService: MailService,
   ) {}
 
   async createOrder(createOrderDto: CreateOrderDto) {
     const {
       products,
+      customer_email,
       shipping_city_code,
       shipping_district_code,
       shipping_ward_code,
@@ -60,7 +63,7 @@ export class OrderService {
     )
       throw new BadRequestException('Invalid area.');
 
-    return this.orderRepository.createOrder(
+    const createdOrder = await this.orderRepository.createOrder(
       createOrderDto,
       productList.map<OrderProduct>((product) => {
         const productId = product._id.toHexString();
@@ -77,5 +80,6 @@ export class OrderService {
       ward.name,
       totalCost,
     );
+    await this.mailService.sendConfirmationEmail(customer_email, createdOrder);
   }
 }

@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "@fastify/static": "^6.10.1",
+    "@nestjs-modules/mailer": "^1.8.1",
+    "@nestjs/bull": "^0.6.3",
     "@nestjs/cli": "^9.5.0",
     "@nestjs/common": "^9.4.2",
     "@nestjs/config": "^2.3.2",
@@ -30,10 +32,12 @@
     "@nestjs/platform-fastify": "^9.4.2",
     "@nestjs/swagger": "^6.3.0",
     "@typegoose/typegoose": "^11.2.0",
+    "bull": "^4.10.4",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "fastify-swagger": "^5.2.0",
     "mongoose": "^7.2.1",
+    "nodemailer": "^6.9.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^5.0.1",
     "rxjs": "^7.8.1"
