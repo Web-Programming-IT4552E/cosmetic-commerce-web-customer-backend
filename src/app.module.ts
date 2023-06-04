@@ -8,6 +8,7 @@ import { ProductModule } from './product/product.module';
 import { OrderModule } from './order/order.module';
 import { QueueModule } from './queue/queue.module';
 import { MailModule } from './mailer/mail.module';
+import { CustomerModule } from './customer/customer.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { MailModule } from './mailer/mail.module';
     OrderModule,
     QueueModule,
     MailModule,
+    CustomerModule,
   ],
 })
 export class AppModule implements OnModuleDestroy {

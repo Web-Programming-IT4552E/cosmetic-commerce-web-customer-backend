@@ -1,11 +1,11 @@
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
-import { prop } from '@typegoose/typegoose';
+import { getModelForClass, prop } from '@typegoose/typegoose';
 import { Types } from 'mongoose';
 import { getEnumValues } from '../../utils/enum-utils';
 import { UserStatus } from '../enums/user-status.enum';
 import { UserType } from '../enums/user-type.enum';
 
-export abstract class User {
+export class User {
   /**
    * User ID
    *
@@ -109,3 +109,4 @@ export abstract class User {
   @prop({ select: false })
   __v?: number;
 }
+export const UserModel = getModelForClass(User);
