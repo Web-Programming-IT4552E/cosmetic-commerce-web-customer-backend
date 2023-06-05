@@ -1,10 +1,19 @@
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
-import { getModelForClass, prop } from '@typegoose/typegoose';
+import { modelOptions, prop } from '@typegoose/typegoose';
 import { Types } from 'mongoose';
 import { getEnumValues } from '../../utils/enum-utils';
 import { UserStatus } from '../enums/user-status.enum';
 import { UserType } from '../enums/user-type.enum';
 
+@modelOptions({
+  schemaOptions: {
+    timestamps: {
+      createdAt: 'create_time',
+      updatedAt: 'update_time',
+    },
+    discriminatorKey: 'type',
+  },
+})
 export class User {
   /**
    * User ID
@@ -109,4 +118,3 @@ export class User {
   @prop({ select: false })
   __v?: number;
 }
-export const UserModel = getModelForClass(User);
