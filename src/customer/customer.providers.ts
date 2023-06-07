@@ -11,7 +11,7 @@ import { Customer } from './schemas/customer.schema';
 export const customerProviders: FactoryProvider[] = [
   ...[Customer].map<FactoryProvider>((ModelClass) => ({
     provide: ModelClass,
-    inject: [DATABASE_CONNECTION_NAME, User],
+    inject: [DATABASE_CONNECTION_NAME],
     useFactory: () =>
       getDiscriminatorModelForClass(
         getModelForClass(User),
