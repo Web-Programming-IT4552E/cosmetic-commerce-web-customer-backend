@@ -9,6 +9,7 @@ import { OrderModule } from './order/order.module';
 import { QueueModule } from './queue/queue.module';
 import { MailModule } from './mailer/mail.module';
 import { CustomerModule } from './customer/customer.module';
+import { RedisCacheModule } from './cache/redis/redis-cache.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { CustomerModule } from './customer/customer.module';
     QueueModule,
     MailModule,
     CustomerModule,
+    RedisCacheModule,
   ],
 })
 export class AppModule implements OnModuleDestroy {
