@@ -15,13 +15,14 @@ import { redisStore } from 'cache-manager-redis-yet';
           },
           ttl: 60 * 60, // 1 hour
         });
-
         return {
           store: store as unknown as CacheStore,
         };
       },
       inject: [ConfigService],
+      isGlobal: true,
     }),
   ],
+  // exports: [RedisCacheModule, CacheModule],
 })
 export class RedisCacheModule {}

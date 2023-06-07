@@ -8,4 +8,8 @@ export class CustomerService {
   async getCurrentCustomerAccountInformation(email: string) {
     return this.customerRepository.getCustomerByEmail(email);
   }
+
+  async getCustomerByEmailAlongWithPassword(email: string) {
+    return this.customerRepository.getCustomerByEmailAlongWithPassword(email);
+  }
 }

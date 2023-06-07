@@ -12,4 +12,16 @@ export class CustomerRepository {
   async getCustomerByEmail(email: string): Promise<Customer | null> {
     return this.customerModel.findOne({ email }).lean().exec();
   }
+
+  async getCustomerByEmailAlongWithPassword(
+    email: string,
+  ): Promise<Customer | null> {
+    return this.customerModel.findOne({ email }).select({
+      _id: 1,
+      email: 1,
+      hashed_password: 1,
+      type: 1,
+      status: 1,
+    });
+  }
 }
