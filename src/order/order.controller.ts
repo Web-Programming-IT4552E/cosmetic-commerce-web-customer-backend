@@ -1,5 +1,6 @@
 import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
 import { ApiBadRequestResponse, ApiTags } from '@nestjs/swagger';
+import { Public } from 'src/common/decorators/auth.decorator';
 import { CreateOrderDto } from './dtos/create-order.dto';
 import { OrderService } from './order.service';
 
@@ -8,6 +9,7 @@ import { OrderService } from './order.service';
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
+  @Public()
   @ApiBadRequestResponse({
     description: 'Invalid body, check error for more info',
   })

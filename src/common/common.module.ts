@@ -1,6 +1,6 @@
 // import { HttpModule } from '@nestjs/axios';
 import { Global, Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 
 const providers = [ConfigService];
@@ -22,7 +22,7 @@ const jwtModule = JwtModule.registerAsync({
 @Global()
 @Module({
   providers,
-  imports: [jwtModule, ConfigModule],
+  imports: [jwtModule],
   exports: [...providers, jwtModule],
 })
 export class CommonModule {}

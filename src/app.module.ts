@@ -20,12 +20,12 @@ import { CommonModule } from './common/common.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    QueueModule,
     AreaModule,
     DatabaseModule,
     CategoryModule,
     ProductModule,
     OrderModule,
-    QueueModule,
     MailModule,
     CustomerModule,
     RedisCacheModule,
