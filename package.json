@@ -30,6 +30,7 @@
     "@nestjs/common": "^9.4.2",
     "@nestjs/config": "^2.3.2",
     "@nestjs/core": "^9.4.2",
+    "@nestjs/jwt": "^10.0.3",
     "@nestjs/platform-fastify": "^9.4.2",
     "@nestjs/swagger": "^6.3.0",
     "@typegoose/typegoose": "^11.2.0",
