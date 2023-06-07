@@ -39,7 +39,8 @@ async function bootstrap() {
     const documentBuilder = new DocumentBuilder()
       .setTitle(configService.get('SWAGGER_TITLE') || 'Title')
       .setDescription(configService.get('SWAGGER_DESCRIPTION') || 'Description')
-      .setVersion(configService.get('SWAGGER_SET_VERSION') || '1.0');
+      .setVersion(configService.get('SWAGGER_SET_VERSION') || '1.0')
+      .addBearerAuth();
 
     const serverUrl = configService.get<string>('SWAGGER_TARGET_SERVER_URL');
     if (serverUrl) documentBuilder.addServer(serverUrl);

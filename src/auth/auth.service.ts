@@ -71,4 +71,80 @@ export class AuthService {
       refreshToken,
     };
   }
+
+  async logout(accessToken: string, userId: string): Promise<boolean> {
+    const signature = accessToken.split('.')[2];
+    const logoutResult = await this.redisCache.store.client.hDel(
+      `${CACHE_CONSTANT.SESSION_PREFIX}${userId}`,
+      signature,
+    );
+
+    return Boolean(logoutResult);
+  }
+
+  async refreshToken(accessToken: string, refreshToken: string) {
+    const signatureAccessToken = accessToken.split('.')[2];
+    const signatureRefreshToken = refreshToken.split('.')[2];
+
+    let payload: JwtPayload;
+
+    try {
+      payload = await this.jwtService.verifyAsync(refreshToken, {
+        secret: this.configService.get('JWT_REFRESH_TOKEN_SECRET'),
+      });
+    } catch (error) {
+      if (error.name === 'TokenExpiredError') {
+        payload = this.jwtService.decode(refreshToken) as JwtPayload;
+        await this.redisCache.store.client.hDel(
+          `${CACHE_CONSTANT.SESSION_PREFIX}${payload.userId}`,
+          signatureAccessToken,
+        );
+
+        throw new BadRequestException('Expired refresh token');
+      } else {
+        throw new BadRequestException('Refresh token failed');
+      }
+    }
+
+    const signatureRefreshTokenCache = await this.redisCache.store.client.hGet(
+      `${CACHE_CONSTANT.SESSION_PREFIX}${payload.userId}`,
+      signatureAccessToken,
+    );
+
+    if (
+      !signatureRefreshTokenCache ||
+      signatureRefreshTokenCache !== signatureRefreshToken
+    ) {
+      throw new BadRequestException('Refresh token failed');
+    }
+
+    const newAccessToken = this.generateAccessToken({
+      userId: payload.userId,
+      role: payload.role,
+    });
+
+    const newRefreshToken = this.generateRefreshToken({
+      userId: payload.userId,
+      role: payload.role,
+    });
+
+    const newSignatureAccessToken = newAccessToken.split('.')[2];
+    const newSignatureRefreshToken = newRefreshToken.split('.')[2];
+
+    await this.redisCache.store.client.hSetNX(
+      `${CACHE_CONSTANT.SESSION_PREFIX}${payload.userId}`,
+      newSignatureAccessToken,
+      newSignatureRefreshToken,
+    );
+
+    await this.redisCache.store.client.hDel(
+      `${CACHE_CONSTANT.SESSION_PREFIX}${payload.userId}`,
+      signatureAccessToken,
+    );
+
+    return {
+      accessToken: newAccessToken,
+      refreshToken: newRefreshToken,
+    };
+  }
 }

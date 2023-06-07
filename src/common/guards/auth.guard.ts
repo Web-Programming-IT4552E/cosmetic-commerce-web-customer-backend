@@ -12,6 +12,7 @@ import type { JwtPayload } from 'src/auth/dtos/jwt-payload.dto';
 import { IS_PUBLIC } from 'src/common/decorators/auth.decorator';
 import { RedisCache } from 'cache-manager-redis-yet';
 import { COMMON_CONSTANT } from '../constants/common.constant';
+import { CACHE_CONSTANT } from '../constants/cache.constant';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
@@ -41,7 +42,6 @@ export class JwtAuthGuard implements CanActivate {
       const request = context.switchToHttp().getRequest();
 
       const token = this.extractTokenFromHeader(request);
-
       if (!token) {
         throw new UnauthorizedException();
       }
@@ -51,10 +51,9 @@ export class JwtAuthGuard implements CanActivate {
       const signature = token.split('.')[2];
 
       const isExistSignature = await this.cacheManager.store.client.hExists(
-        `${payload.userId}`,
+        `${CACHE_CONSTANT.SESSION_PREFIX}${payload.userId}`,
         signature,
       );
-
       if (!isExistSignature) {
         throw new UnauthorizedException();
       }
