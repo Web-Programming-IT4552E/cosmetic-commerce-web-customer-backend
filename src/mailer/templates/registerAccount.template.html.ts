@@ -1,4 +1,10 @@
-export const registerTemplate = `<!DOCTYPE html>
+export function generateRegisterTemple(
+  user_mail: string,
+  user_name: string,
+  verify_token_site: string,
+) {
+  return `
+<!DOCTYPE html>
 <html>
   <head>
     <title></title>
@@ -219,7 +225,7 @@ export const registerTemplate = `<!DOCTYPE html>
                 "
               >
                 <p style="margin: 0">
-                  Dear {{user_name}}, <br />
+                  Dear ${user_name}, <br />
                   Thanks for signing up to keep in touch with Candle In The Wind Shop. <br />
                   Please click at the button to confirm and activate your account 
                 </p>
@@ -242,7 +248,7 @@ export const registerTemplate = `<!DOCTYPE html>
                             bgcolor="#e9880a"
                           >
                             <a
-                              href="{{verify_token_site}}"
+                              href="${verify_token_site}"
                               target="_blank"
                               style="
                                 font-size: 20px;
@@ -301,8 +307,8 @@ export const registerTemplate = `<!DOCTYPE html>
                 "
               >
                 <p style="margin: 0">
-                  <a href="{{verify_token_site}}" target="_blank" style="color: #e6b42d"
-                    >{{verify_token_site}}</a
+                  <a href="${verify_token_site}" target="_blank" style="color: #e6b42d"
+                    >${verify_token_site}</a
                   >
                 </p>
               </td>
@@ -400,3 +406,4 @@ export const registerTemplate = `<!DOCTYPE html>
   </body>
 </html>
 `;
+}

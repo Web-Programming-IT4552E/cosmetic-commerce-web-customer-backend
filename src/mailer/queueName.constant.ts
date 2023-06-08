@@ -1,1 +1,0 @@
-export const CREATE_ORDER_QUEUE = 'CREATE_ORDER_QUEUE';

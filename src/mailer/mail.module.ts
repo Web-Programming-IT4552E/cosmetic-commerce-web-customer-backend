@@ -4,7 +4,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { BullModule } from '@nestjs/bull';
 import { MailProcessor } from './mail.processor';
 import { MailService } from './mail.service';
-import { EMAIL_QUEUE } from './mail.constant';
+import { EMAIL_QUEUE } from './constants/mail.constant';
 
 @Module({
   imports: [

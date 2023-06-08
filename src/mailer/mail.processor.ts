@@ -9,9 +9,13 @@ import {
 } from '@nestjs/bull';
 import { MailerService } from '@nestjs-modules/mailer';
 import { ConfigService } from '@nestjs/config';
-import { getOrderEmailTemplate } from './templates/template.generator';
-import { EMAIL_QUEUE } from './mail.constant';
-import { CREATE_ORDER_QUEUE } from './queueName.constant';
+import { getOrderEmailTemplate } from './templates/createdOrder.template.generator';
+import { EMAIL_QUEUE } from './constants/mail.constant';
+import {
+  CREATED_NEW_ORDER_NOTIFICATION,
+  CREATE_NEW_CUSTOMER_ACCOUNT_VERIFIFICATION,
+} from './constants/queueName.constant';
+import { generateRegisterTemple } from './templates/registerAccount.template.html';
 
 @Injectable()
 @Processor(EMAIL_QUEUE)
@@ -41,12 +45,12 @@ export class MailProcessor {
     );
   }
 
-  @Process(CREATE_ORDER_QUEUE)
-  public async confirmRegistration(
+  @Process(CREATED_NEW_ORDER_NOTIFICATION)
+  public async notifyOrderCreated(
     job: Job<{ emailAddress: string; createdOrder: any }>,
   ): Promise<void> {
     this.logger.log(
-      `Sending confirm registration email to '${job.data.emailAddress}'`,
+      `Sending CREATED_NEW_ORDER_NOTIFICATION email to '${job.data.emailAddress}'`,
     );
     const template = getOrderEmailTemplate(job.data.createdOrder);
     try {
@@ -59,7 +63,41 @@ export class MailProcessor {
     } catch (e) {
       this.logger.error(e.message);
       this.logger.error(
-        `Failed to send confirmation email to '${job.data.emailAddress}'`,
+        `Failed to send CREATED_NEW_ORDER_NOTIFICATION email to '${job.data.emailAddress}'`,
+      );
+    }
+  }
+
+  @Process(CREATE_NEW_CUSTOMER_ACCOUNT_VERIFIFICATION)
+  public async confirmRegistration(
+    job: Job<{
+      customer_email: string;
+      customer_fullname: string;
+      redirect_link: string;
+    }>,
+  ) {
+    const { customer_email, customer_fullname, redirect_link } = {
+      ...job.data,
+    };
+    this.logger.log(
+      `Sending confirm CREATE_NEW_CUSTOMER_ACCOUNT_VERIFIFICATION email to '${job.data.customer_email}'`,
+    );
+    const template = generateRegisterTemple(
+      customer_email,
+      customer_fullname,
+      redirect_link,
+    );
+    try {
+      await this.mailerService.sendMail({
+        to: job.data.customer_email,
+        from: this.configService.get('EMAIL_ADDRESS'),
+        subject: 'Create Account Verrification',
+        html: template,
+      });
+    } catch (e) {
+      this.logger.error(e.message);
+      this.logger.error(
+        `Failed to send CREATE_NEW_CUSTOMER_ACCOUNT_VERIFIFICATION email to '${customer_email}'`,
       );
     }
   }
