@@ -60,6 +60,9 @@ export class OrderService {
       ward,
       totalCost,
     );
-    await this.mailService.sendNewOrderCreatedEmail(customer_email, createdOrder);
+    await this.mailService.sendNewOrderCreatedEmail(
+      customer_email,
+      createdOrder,
+    );
   }
 }
