@@ -11,6 +11,7 @@ import { JwtService } from '@nestjs/jwt';
 import type { JwtPayload } from 'src/auth/dtos/jwt-payload.dto';
 import { IS_PUBLIC } from 'src/common/decorators/auth.decorator';
 import { RedisCache } from 'cache-manager-redis-yet';
+import { ConfigService } from '@nestjs/config';
 import { COMMON_CONSTANT } from '../constants/common.constant';
 import { CACHE_CONSTANT } from '../constants/cache.constant';
 
@@ -19,6 +20,7 @@ export class JwtAuthGuard implements CanActivate {
   constructor(
     private jwtService: JwtService,
     private reflector: Reflector,
+    private configService: ConfigService,
     @Inject(CACHE_MANAGER) private cacheManager: RedisCache,
   ) {}
 
@@ -51,7 +53,9 @@ export class JwtAuthGuard implements CanActivate {
       const signature = token.split('.')[2];
 
       const isExistSignature = await this.cacheManager.store.client.hExists(
-        `${CACHE_CONSTANT.SESSION_PREFIX}${payload.userId}`,
+        `${this.configService.get('APP_NAME')}${CACHE_CONSTANT.SESSION_PREFIX}${
+          payload.userId
+        }`,
         signature,
       );
       if (!isExistSignature) {
