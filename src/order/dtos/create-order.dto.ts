@@ -38,15 +38,15 @@ export class CreateOrderDto {
 
   @IsString()
   @IsNotEmpty()
-  shipping_city_code: string;
+  city: string;
 
   @IsString()
   @IsNotEmpty()
-  shipping_district_code: string;
+  district: string;
 
   @IsString()
   @IsNotEmpty()
-  shipping_ward_code: string;
+  ward: string;
 
   @IsString()
   @IsNotEmpty()

@@ -16,13 +16,7 @@ export class OrderService {
   ) {}
 
   async createOrder(createOrderDto: CreateOrderDto) {
-    const {
-      products,
-      customer_email,
-      shipping_city_code,
-      shipping_district_code,
-      shipping_ward_code,
-    } = createOrderDto;
+    const { products, customer_email, city, district, ward } = createOrderDto;
 
     const productList = await this.productService.getProductsByIdList(
       products.map((product) => product.product_id),
@@ -49,20 +43,6 @@ export class OrderService {
         productSet[orderedProduct.product_id].price * orderedProduct.quantity;
     });
 
-    const city = await this.areaService.getCityByCode(shipping_city_code);
-    const district = await this.areaService.getDistrictByCode(
-      shipping_district_code,
-    );
-    const ward = await this.areaService.getWardByCode(shipping_ward_code);
-    if (!city || !district || !ward)
-      throw new BadRequestException('Invalid area.');
-
-    if (
-      city.code !== district.city_code ||
-      district.code !== ward.district_code
-    )
-      throw new BadRequestException('Invalid area.');
-
     const createdOrder = await this.orderRepository.createOrder(
       createOrderDto,
       productList.map<OrderProduct>((product) => {
@@ -75,9 +55,9 @@ export class OrderService {
           image: product.image,
         };
       }),
-      city.name,
-      district.name,
-      ward.name,
+      city,
+      district,
+      ward,
       totalCost,
     );
     await this.mailService.sendConfirmationEmail(customer_email, createdOrder);
