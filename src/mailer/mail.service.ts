@@ -2,6 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { Queue } from 'bull';
 import { InjectQueue } from '@nestjs/bull';
 import { EMAIL_QUEUE } from './mail.constant';
+import { CREATE_ORDER_QUEUE } from './queueName.constant';
 
 @Injectable()
 export class MailService {
@@ -14,7 +15,7 @@ export class MailService {
     createdOrder: any,
   ): Promise<void> {
     try {
-      await this.mailQueue.add('CONFIRM_REGISTRATION', {
+      await this.mailQueue.add(CREATE_ORDER_QUEUE, {
         emailAddress,
         createdOrder,
       });

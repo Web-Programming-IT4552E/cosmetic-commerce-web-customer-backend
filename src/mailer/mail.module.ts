@@ -27,8 +27,13 @@ import { EMAIL_QUEUE } from './mail.constant';
         },
       }),
     }),
-    BullModule.registerQueue({
+    BullModule.registerQueueAsync({
       name: EMAIL_QUEUE,
+      useFactory: (configService: ConfigService) => ({
+        // TODO : can replace this by developing a middleware to automate prepend a prefix to all logs to Redis
+        name: `${configService.get<string>('APP_NAME')}:${EMAIL_QUEUE}`,
+      }),
+      inject: [ConfigService],
     }),
   ],
   providers: [MailProcessor, MailService],

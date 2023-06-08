@@ -11,6 +11,7 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { ConfigService } from '@nestjs/config';
 import { getOrderEmailTemplate } from './templates/template.generator';
 import { EMAIL_QUEUE } from './mail.constant';
+import { CREATE_ORDER_QUEUE } from './queueName.constant';
 
 @Injectable()
 @Processor(EMAIL_QUEUE)
@@ -40,7 +41,7 @@ export class MailProcessor {
     );
   }
 
-  @Process('CONFIRM_REGISTRATION')
+  @Process(CREATE_ORDER_QUEUE)
   public async confirmRegistration(
     job: Job<{ emailAddress: string; createdOrder: any }>,
   ): Promise<void> {
@@ -52,8 +53,7 @@ export class MailProcessor {
       await this.mailerService.sendMail({
         to: job.data.emailAddress,
         from: this.configService.get('EMAIL_ADDRESS'),
-        subject: 'Registration',
-        text: 'This is a test email sent from Express app.',
+        subject: 'Create Order Notification',
         html: template,
       });
     } catch (e) {

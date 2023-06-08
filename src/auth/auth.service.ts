@@ -11,6 +11,7 @@ import { LoginRequestDto } from './dtos/login-request.dto';
 
 @Injectable()
 export class AuthService {
+  // TODO : can replace this by developing a middleware to automate prepend a prefix to all logs to Redis
   private APP_SESSION_PREFIX: string;
 
   constructor(
