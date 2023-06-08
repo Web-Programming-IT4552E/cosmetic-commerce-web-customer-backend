@@ -1,22 +1,28 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { CACHE_CONSTANT } from 'src/common/constants/cache.constant';
 import { CustomerService } from 'src/customer/customer.service';
 import { ConfigService } from '@nestjs/config';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { RedisCache } from 'cache-manager-redis-yet';
 import { compareSync } from 'bcrypt';
+import { CACHE_CONSTANT } from 'src/common/constants/cache.constant';
 import { JwtPayload } from './dtos/jwt-payload.dto';
 import { LoginRequestDto } from './dtos/login-request.dto';
 
 @Injectable()
 export class AuthService {
+  private APP_SESSION_PREFIX: string;
+
   constructor(
     @Inject(CACHE_MANAGER) private redisCache: RedisCache,
     private readonly jwtService: JwtService,
     private readonly customerService: CustomerService,
     private readonly configService: ConfigService,
-  ) {}
+  ) {
+    this.APP_SESSION_PREFIX = `${this.configService.get('APP_NAME')}${
+      CACHE_CONSTANT.SESSION_PREFIX
+    }`;
+  }
 
   generateAccessToken(payload: JwtPayload): string {
     return this.jwtService.sign(payload, {
@@ -61,7 +67,7 @@ export class AuthService {
     const signatureRefreshToken = refreshToken.split('.')[2];
 
     await this.redisCache.store.client.hSetNX(
-      `${CACHE_CONSTANT.SESSION_PREFIX}${user._id}`,
+      `${this.APP_SESSION_PREFIX}${user._id}`,
       signatureAccessToken,
       signatureRefreshToken,
     );
@@ -75,7 +81,7 @@ export class AuthService {
   async logout(accessToken: string, userId: string): Promise<boolean> {
     const signature = accessToken.split('.')[2];
     const logoutResult = await this.redisCache.store.client.hDel(
-      `${CACHE_CONSTANT.SESSION_PREFIX}${userId}`,
+      `${this.APP_SESSION_PREFIX}${userId}`,
       signature,
     );
 
@@ -96,7 +102,7 @@ export class AuthService {
       if (error.name === 'TokenExpiredError') {
         payload = this.jwtService.decode(refreshToken) as JwtPayload;
         await this.redisCache.store.client.hDel(
-          `${CACHE_CONSTANT.SESSION_PREFIX}${payload.userId}`,
+          `${this.APP_SESSION_PREFIX}${payload.userId}`,
           signatureAccessToken,
         );
 
@@ -107,7 +113,7 @@ export class AuthService {
     }
 
     const signatureRefreshTokenCache = await this.redisCache.store.client.hGet(
-      `${CACHE_CONSTANT.SESSION_PREFIX}${payload.userId}`,
+      `${this.APP_SESSION_PREFIX}${payload.userId}`,
       signatureAccessToken,
     );
 
@@ -132,13 +138,13 @@ export class AuthService {
     const newSignatureRefreshToken = newRefreshToken.split('.')[2];
 
     await this.redisCache.store.client.hSetNX(
-      `${CACHE_CONSTANT.SESSION_PREFIX}${payload.userId}`,
+      `${this.APP_SESSION_PREFIX}${payload.userId}`,
       newSignatureAccessToken,
       newSignatureRefreshToken,
     );
 
     await this.redisCache.store.client.hDel(
-      `${CACHE_CONSTANT.SESSION_PREFIX}${payload.userId}`,
+      `${this.APP_SESSION_PREFIX}${payload.userId}`,
       signatureAccessToken,
     );
 

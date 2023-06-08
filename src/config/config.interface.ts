@@ -1,6 +1,8 @@
 export interface ConfigInterface {
   NODE_ENV: string;
 
+  APP_NAME: string;
+
   PORT: string;
 
   MONGODB_CONN_STRING: string;
@@ -20,4 +22,9 @@ export interface ConfigInterface {
   EMAIL_HOST: string;
   EMAIL_ADDRESS: string;
   EMAIL_PASSWORD: string;
+
+  JWT_ACCESS_TOKEN_SECRET: string;
+  JWT_ACCESS_TOKEN_EXPIRATION_TIME: string;
+  JWT_REFRESH_TOKEN_SECRET: string;
+  JWT_REFRESH_TOKEN_EXPIRATION_TIME: string;
 }

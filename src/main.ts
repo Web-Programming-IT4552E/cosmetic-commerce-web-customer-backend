@@ -11,7 +11,6 @@ import { AppModule } from './app.module';
 import { ConfigInterface } from './config/config.interface';
 
 async function bootstrap() {
-  const logger = new Logger('MainApplication');
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter(),
@@ -27,6 +26,7 @@ async function bootstrap() {
   );
 
   const configService: ConfigService<ConfigInterface> = app.get(ConfigService);
+  const logger = new Logger(configService.get('APP_NAME'));
   const env = configService.get('NODE_ENV') || 'development';
   if (env !== 'production') app.enableCors();
 
