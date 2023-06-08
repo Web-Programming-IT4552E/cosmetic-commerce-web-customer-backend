@@ -55,6 +55,7 @@ export class AuthService {
 
     const accessToken = this.generateAccessToken({
       userId: user._id.toString(),
+      email: user.email,
       role: user.type,
     });
 
@@ -62,6 +63,7 @@ export class AuthService {
 
     const refreshToken = this.generateRefreshToken({
       userId: user._id.toString(),
+      email: user.email,
       role: user.type,
     });
 
@@ -127,11 +129,13 @@ export class AuthService {
 
     const newAccessToken = this.generateAccessToken({
       userId: payload.userId,
+      email: payload.email,
       role: payload.role,
     });
 
     const newRefreshToken = this.generateRefreshToken({
       userId: payload.userId,
+      email: payload.email,
       role: payload.role,
     });
 
