@@ -9,10 +9,10 @@ import { OrderService } from './order.service';
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
-  @Public()
   @ApiBadRequestResponse({
     description: 'Invalid body, check error for more info',
   })
+  @Public()
   @Post('create')
   createOrder(@Body() createOrderDto: CreateOrderDto) {
     try {

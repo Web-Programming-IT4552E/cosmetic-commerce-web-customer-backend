@@ -1,5 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { Public } from 'src/common/decorators/auth.decorator';
 import { AreaService } from './area.service';
 
 @ApiTags('area')
@@ -7,6 +8,7 @@ import { AreaService } from './area.service';
 export class AreaController {
   constructor(private readonly areaService: AreaService) {}
 
+  @Public()
   @ApiOperation({ description: 'Get all countries' })
   @Get('countries')
   async getAllCountries() {
@@ -18,6 +20,7 @@ export class AreaController {
     name: 'country',
     description: 'Country code, from get all countries method',
   })
+  @Public()
   @Get('cities')
   async getAllCitiesByCountry(@Query('country') countryCode: string) {
     return this.areaService.getAllCitiesByCountry(countryCode);
@@ -28,6 +31,7 @@ export class AreaController {
     name: 'city',
     description: 'City (province) code, from get all cities (provinces) method',
   })
+  @Public()
   @Get('districts')
   async getAllDistrictsByCity(@Query('city') cityCode: string) {
     return this.areaService.getAllDistrictsByCity(cityCode);
@@ -38,6 +42,7 @@ export class AreaController {
     name: 'district',
     description: 'District code, from get all districts method',
   })
+  @Public()
   @Get('wards')
   async getAllWardsByDistrict(@Query('district') districtCode: string) {
     return this.areaService.getAllWardsByDistrict(districtCode);
