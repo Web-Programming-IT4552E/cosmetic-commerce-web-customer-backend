@@ -10,7 +10,7 @@ export class MailService {
 
   constructor(@InjectQueue(EMAIL_QUEUE) private readonly mailQueue: Queue) {}
 
-  public async sendConfirmationEmail(
+  public async sendNewOrderCreatedEmail(
     emailAddress: string,
     createdOrder: any,
   ): Promise<void> {
