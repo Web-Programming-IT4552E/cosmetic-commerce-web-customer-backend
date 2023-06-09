@@ -74,13 +74,13 @@ export class MailService {
   public async sendResetPasswordEmail(
     customer_email: string,
     customer_fullname: string,
-    verify_active_token_site: string,
+    verify_token_site: string,
   ): Promise<void> {
     try {
       await this.mailQueue.add(RESET_PASSWORD_VERIFICATION, {
         customer_email,
         customer_fullname,
-        verify_active_token_site,
+        verify_token_site,
       });
     } catch (error) {
       this._logger.error(

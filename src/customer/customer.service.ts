@@ -117,11 +117,11 @@ export class CustomerService {
         'Activation unsuccesfully : invalid ActiveToken or user has been activated before! This error will also be thrown in the case that user has been deleted !',
       );
     }
-    // await sendVerifySucceedEmailQueue.add({
-    //   user_email: user.email,
-    //   user_fullname: user.fullname,
-    // });
-    // return 'Kích hoạt tài khoản thành công';
+    await this.mailService.sendAccountVerificationSuccessEmail(
+      user.email,
+      user.fullname,
+    );
+    return 'Kích hoạt tài khoản thành công';
   }
 
   async sendResetPasswordRequest(user_email: string) {
@@ -138,7 +138,13 @@ export class CustomerService {
     await this.customerRepository.findOneCustomerAndUpdate(query, {
       active_token: otp_active_token,
     });
-    // await Mailer.resetPassword(user.email, user.fullname, otp_active_token);
+    await this.mailService.sendResetPasswordEmail(
+      user.email,
+      user.fullname,
+      `${this.configService.get(
+        'WEBSITE_DOMAIN_PATH',
+      )}/account/forgot-password/verify/${otp_active_token}`,
+    );
   }
 
   async verifyActiveToken(active_token: string) {
