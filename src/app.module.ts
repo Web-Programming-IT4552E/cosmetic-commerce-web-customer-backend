@@ -15,6 +15,7 @@ import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './common/guards/auth.guard';
 import { CommonModule } from './common/common.module';
 import { ShippingAddressModule } from './shipping_address/shipping_address.module';
+import { DiscountCodeModule } from './discount_code/discount_code.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { ShippingAddressModule } from './shipping_address/shipping_address.modul
     AuthModule,
     CommonModule,
     ShippingAddressModule,
+    DiscountCodeModule,
   ],
   providers: [
     {
