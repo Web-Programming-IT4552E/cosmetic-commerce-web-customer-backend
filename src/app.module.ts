@@ -14,6 +14,7 @@ import { RedisCacheModule } from './cache/redis/redis-cache.module';
 import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './common/guards/auth.guard';
 import { CommonModule } from './common/common.module';
+import { ShippingAddressModule } from './shipping_address/shipping_address.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { CommonModule } from './common/common.module';
     RedisCacheModule,
     AuthModule,
     CommonModule,
+    ShippingAddressModule,
   ],
   providers: [
     {

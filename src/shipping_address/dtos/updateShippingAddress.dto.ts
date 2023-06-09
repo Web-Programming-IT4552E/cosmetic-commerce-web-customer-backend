@@ -1,11 +1,10 @@
-import { Expose, Type } from 'class-transformer';
+import { Type } from 'class-transformer';
 import { IsNotEmpty, ValidateNested } from 'class-validator';
-import { ShippingAddressDetail } from '../schemas/shipping-address-detail.schema';
+import { ShippingAddressDetailDto } from './shippingAddressDetail.dto';
 
 export class UpdateShippingAddressDto {
-  @Expose()
   @IsNotEmpty()
-  @Type(() => ShippingAddressDetail)
+  @Type(() => ShippingAddressDetailDto)
   @ValidateNested()
-  address_detail: ShippingAddressDetail;
+  address_detail: ShippingAddressDetailDto;
 }

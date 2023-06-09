@@ -4,7 +4,7 @@ import { Types } from 'mongoose';
 import { getEnumValues } from '../../utils/enum-utils';
 import { OrderStatus } from '../enums/order-status.enum';
 import { OrderProduct } from './order-product.schema';
-import { ShippingAddressDetail } from '../../shipping_address/schemas/shipping-address-detail.schema';
+import { ShippingAddressDetail } from '../../shipping_address/schemas/shipping_address_detail.schema';
 
 @modelOptions({
   schemaOptions: {

@@ -1,7 +1,7 @@
 import { modelOptions, prop, Ref } from '@typegoose/typegoose';
 import { Types } from 'mongoose';
 import { User } from 'src/user/schemas/user.schema';
-import { ShippingAddressDetail } from './shipping-address-detail.schema';
+import { ShippingAddressDetail } from './shipping_address_detail.schema';
 import { ShippingAddressStatus } from '../enums/shipping-address-status.enum';
 
 @modelOptions({
