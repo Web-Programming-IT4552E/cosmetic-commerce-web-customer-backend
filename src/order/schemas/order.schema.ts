@@ -4,7 +4,7 @@ import { Types } from 'mongoose';
 import { getEnumValues } from '../../utils/enum-utils';
 import { OrderStatus } from '../enums/order-status.enum';
 import { OrderProduct } from './order-product.schema';
-import { ShippingAddress } from './shipping-address.schema';
+import { ShippingAddressDetail } from '../../shipping_address/schemas/shipping-address-detail.schema';
 
 @modelOptions({
   schemaOptions: {
@@ -40,8 +40,8 @@ export class Order {
   @prop({ required: true })
   customer_email: string;
 
-  @prop({ required: true, type: ShippingAddress, _id: false })
-  shipping_address: ShippingAddress;
+  @prop({ required: true, type: ShippingAddressDetail, _id: false })
+  shipping_address: ShippingAddressDetail;
 
   @prop({ required: true })
   payment_method: string;

@@ -16,7 +16,7 @@ export class OrderService {
   ) {}
 
   async createOrder(createOrderDto: CreateOrderDto) {
-    const { products, customer_email, city, district, ward } = createOrderDto;
+    const { products, customer_email } = createOrderDto;
 
     const productList = await this.productService.getProductsByIdList(
       products.map((product) => product.product_id),
@@ -55,9 +55,6 @@ export class OrderService {
           image: product.image,
         };
       }),
-      city,
-      district,
-      ward,
       totalCost,
     );
     await this.mailService.sendNewOrderCreatedEmail(

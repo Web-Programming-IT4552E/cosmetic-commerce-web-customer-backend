@@ -14,26 +14,12 @@ export class OrderRepository {
   async createOrder(
     createOrderDto: CreateOrderDto,
     products: OrderProduct[],
-    city: string,
-    district: string,
-    ward: string,
     totalProductCost: number,
   ) {
-    const { receiver_name, receiver_phone_number, shipping_address } =
-      createOrderDto;
-
     return this.orderModel.create({
       ...createOrderDto,
       order_id: (await this.orderModel.estimatedDocumentCount()) + 1,
       products,
-      shipping_address: {
-        receiver_name,
-        receiver_phone_number,
-        city,
-        district,
-        ward,
-        address: shipping_address,
-      },
       status: OrderStatus.NEW,
       total_product_cost: totalProductCost,
     });

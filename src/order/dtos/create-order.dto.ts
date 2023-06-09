@@ -6,6 +6,7 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
+import { ShippingAddressDetailDto } from 'src/shipping_address/dtos/shippingAddressDetail.dto';
 import { CreateOrderProduct } from './create-order-product.dto';
 
 export class CreateOrderDto {
@@ -28,27 +29,8 @@ export class CreateOrderDto {
   @IsNotEmpty()
   payment_method: string;
 
-  @IsString()
   @IsNotEmpty()
-  receiver_name: string;
-
-  @IsString()
-  @IsNotEmpty()
-  receiver_phone_number: string;
-
-  @IsString()
-  @IsNotEmpty()
-  city: string;
-
-  @IsString()
-  @IsNotEmpty()
-  district: string;
-
-  @IsString()
-  @IsNotEmpty()
-  ward: string;
-
-  @IsString()
-  @IsNotEmpty()
-  shipping_address: string;
+  @Type(() => ShippingAddressDetailDto)
+  @ValidateNested()
+  shipping_address: ShippingAddressDetailDto;
 }
