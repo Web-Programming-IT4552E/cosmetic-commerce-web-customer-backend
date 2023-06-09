@@ -9,13 +9,17 @@ import {
 } from '@nestjs/bull';
 import { MailerService } from '@nestjs-modules/mailer';
 import { ConfigService } from '@nestjs/config';
-import { getOrderEmailTemplate } from './templates/createdOrder.template.generator';
+import { getOrderEmailTemplate } from './templates/createdOrder.template.html';
 import { EMAIL_QUEUE } from './constants/mail.constant';
 import {
+  ACCOUNT_VERIFICATION_SUCCESS,
   CREATED_NEW_ORDER_NOTIFICATION,
   CREATE_NEW_CUSTOMER_ACCOUNT_VERIFIFICATION,
+  RESET_PASSWORD_VERIFICATION,
 } from './constants/queueName.constant';
 import { generateRegisterTemple } from './templates/registerAccount.template.html';
+import { generateAccountVerificationSuccessTemplate } from './templates/verificationSuccess.template.html';
+import { generateResetPasswordTemplate } from './templates/resetPassword.template.html';
 
 @Injectable()
 @Processor(EMAIL_QUEUE)
@@ -98,6 +102,72 @@ export class MailProcessor {
       this.logger.error(e.message);
       this.logger.error(
         `Failed to send CREATE_NEW_CUSTOMER_ACCOUNT_VERIFIFICATION email to '${customer_email}'`,
+      );
+    }
+  }
+
+  @Process(ACCOUNT_VERIFICATION_SUCCESS)
+  public async accountVerificationSuccess(
+    job: Job<{
+      customer_email: string;
+      customer_fullname: string;
+    }>,
+  ) {
+    const { customer_email, customer_fullname } = {
+      ...job.data,
+    };
+    this.logger.log(
+      `Sending confirm ACCOUNT_VERIFICATION_SUCCESS email to '${job.data.customer_email}'`,
+    );
+    const template = generateAccountVerificationSuccessTemplate(
+      customer_email,
+      customer_fullname,
+    );
+    try {
+      await this.mailerService.sendMail({
+        to: job.data.customer_email,
+        from: this.configService.get('EMAIL_ADDRESS'),
+        subject: 'Account Verrification Success',
+        html: template,
+      });
+    } catch (e) {
+      this.logger.error(e.message);
+      this.logger.error(
+        `Failed to send ACCOUNT_VERIFICATION_SUCCESS email to '${customer_email}'`,
+      );
+    }
+  }
+
+  @Process(RESET_PASSWORD_VERIFICATION)
+  public async resetPasswordVerification(
+    job: Job<{
+      customer_email: string;
+      customer_fullname: string;
+      verify_token_site: string;
+    }>,
+  ) {
+    const { customer_email, customer_fullname, verify_token_site } = {
+      ...job.data,
+    };
+    this.logger.log(
+      `Sending confirm RESET_PASSWORD_VERIFICATION email to '${job.data.customer_email}'`,
+    );
+    const template = generateResetPasswordTemplate(
+      customer_email,
+      customer_fullname,
+      verify_token_site,
+    );
+    try {
+      await this.mailerService.sendMail({
+        to: job.data.customer_email,
+        from: this.configService.get('EMAIL_ADDRESS'),
+        subject: 'Reset Password Verification',
+        html: template,
+      });
+    } catch (e) {
+      this.logger.error(e.message);
+      this.logger.error(
+        `Failed to send RESET_PASSWORD_VERIFICATION email to '${customer_email}'`,
       );
     }
   }
