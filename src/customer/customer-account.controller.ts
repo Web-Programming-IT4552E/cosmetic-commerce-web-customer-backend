@@ -1,4 +1,14 @@
-import { Body, Controller, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Patch,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtDecodedData, Public } from 'src/common/decorators/auth.decorator';
 import { JwtPayload } from 'src/auth/dtos/jwt-payload.dto';
@@ -83,6 +93,7 @@ export class CustomerAccountController {
   })
   @Public()
   @Post('/forgot-password')
+  @HttpCode(HttpStatus.OK)
   async sendResetPasswordRequest(@Body() emailDto: EmailDto) {
     await this.customerService.sendResetPasswordRequest(emailDto.email);
     return {
@@ -102,6 +113,7 @@ export class CustomerAccountController {
 
   @ApiOperation({ description: "Reset user's password after verified" })
   @Public()
+  @HttpCode(HttpStatus.OK)
   @Post('/forgot-password/updatePassword')
   async resetPassword(@Body() resetPasswordDto: ResetPasswordDto) {
     await this.customerService.resetPassword(

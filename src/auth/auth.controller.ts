@@ -1,4 +1,11 @@
-import { Body, Controller, Post, Req } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpCode,
+  HttpStatus,
+  Post,
+  Req,
+} from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtDecodedData, Public } from 'src/common/decorators/auth.decorator';
 import { AuthService } from './auth.service';
@@ -12,12 +19,14 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('login')
+  @HttpCode(HttpStatus.OK)
   @Public()
   async login(@Body() loginRequestDto: LoginRequestDto) {
     return this.authService.login(loginRequestDto);
   }
 
   @Post('refresh-token')
+  @HttpCode(HttpStatus.OK)
   @Public()
   refreshToken(@Body() refreshTokenRequestDto: RefreshTokenRequestDto) {
     return this.authService.refreshToken(
@@ -27,6 +36,7 @@ export class AuthController {
   }
 
   @ApiBearerAuth()
+  @HttpCode(HttpStatus.OK)
   @Post('logout')
   async logout(@Req() req: any, @JwtDecodedData() data: JwtPayload) {
     const token = req.headers.authorization.split(' ')[1];
