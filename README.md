@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://images-platform.99static.com/UERSKcoxp9lV8PIdu5WkiIxce8Y=/256x0:1019x763/500x500/top/smart/99designs-contests-attachments/86/86348/attachment_86348987" width="200" alt="Nest Logo" /></a>
+  <a href="http://nestjs.com/" target="blank"><img src="https://i.pinimg.com/736x/c5/21/04/c52104c88250fa258f8e86aebf7ccd07.jpg" width="200" alt="Nest Logo" /></a>
 </p>
 
 ## Description
