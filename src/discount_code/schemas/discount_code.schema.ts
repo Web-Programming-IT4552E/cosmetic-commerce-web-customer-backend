@@ -1,18 +1,16 @@
 import { prop, modelOptions } from '@typegoose/typegoose';
-import { DiscountCodeAppliedUsers } from './discountCodeAppliedUsers.interface';
+import { DiscountCodeAppliedUsers } from './discountCodeAppliedUsers.schema';
 import { AmountType } from '../enums/amount-type.enum';
 import { DiscountType } from '../enums/discount-type.enum';
 
 @modelOptions({
+  options: { allowMixed: 1 },
   schemaOptions: {
     timestamps: {
       createdAt: 'create_time',
     },
+    collection: 'discount_codes',
   },
-})
-@modelOptions({
-  options: { allowMixed: 1 },
-  schemaOptions: { collection: 'discount_codes' },
 })
 export class DiscountCode {
   @prop({ required: true })
@@ -36,7 +34,7 @@ export class DiscountCode {
   @prop({ required: true, select: false })
   customer_applying_condition: string;
 
-  @prop({ select: false })
+  @prop({ select: false, _id: false, type: DiscountCodeAppliedUsers })
   applied_user: DiscountCodeAppliedUsers[];
 
   @prop({ required: false, default: 0 })
