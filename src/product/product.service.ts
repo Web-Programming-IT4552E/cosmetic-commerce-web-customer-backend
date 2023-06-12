@@ -22,7 +22,7 @@ export class ProductService {
       limit,
     );
     return {
-      paginationInformation: {
+      paginationInfo: {
         page,
         limit,
         total,
