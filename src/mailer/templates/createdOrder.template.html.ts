@@ -126,10 +126,11 @@ body,
 }
 
 img {
-  display: block;
+  /* display: block; */
   border: 0;
   outline: none;
   text-decoration: none;
+  object-fit: cover;
   -ms-interpolation-mode: bicubic;
 }
 
@@ -382,7 +383,7 @@ ol li {
 }
 
 .es-header-body {
-  background-color: #fef5e4;
+  background-color: #fed7e0;
 }
 
 .es-header-body p,
@@ -409,7 +410,7 @@ ol li {
 }
 
 .es-content-body a {
-  color: #d48344;
+  color: #b55b5b;
   font-size: 14px;
 }
 
@@ -420,7 +421,7 @@ ol li {
 }
 
 .es-footer-body {
-  background-color: #fef5e4;
+  background-color: #fed7e0;
 }
 
 .es-footer-body p,
@@ -491,10 +492,10 @@ h3 {
 a.es-button,
 button.es-button {
   border-style: solid;
-  border-color: #d48344;
+  border-color: #b55b5b;
   border-width: 10px 20px 10px 20px;
   display: inline-block;
-  background: #d48344;
+  background: #b55b5b;
   border-radius: 0px;
   font-size: 16px;
   font-family: arial, 'helvetica neue', helvetica, sans-serif;
@@ -508,7 +509,7 @@ button.es-button {
 
 .es-button-border {
   border-style: solid solid solid solid;
-  border-color: #d48344 #d48344 #d48344 #d48344;
+  border-color: #b55b5b #b55b5b #b55b5b #b55b5b;
   background: #2cb543;
   border-width: 0px 0px 0px 0px;
   display: inline-block;
@@ -716,13 +717,26 @@ button.es-button {
       <table cellpadding="0" cellspacing="0" class="es-header" align="center">
           <tbody>
               <tr>
-                  <td class="esd-stripe" esd-custom-block-id="1735" align="center">
-                      <table class="es-header-body" style="background-color: #fef5e4;" width="800" cellspacing="0"
-                          cellpadding="0" bgcolor="#fef5e4" align="center">
+                  <td class="esd-stripe" esd-custom-block-id="1735" align="center" style = "background-color :#fed7e0">
+                      <table class="es-header-body" style="background-color: #fed7e0;" width="800" cellspacing="0"
+                          cellpadding="0" bgcolor="#fed7e0" align="center">
+                          
+                      </table>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+
+      <table class="es-content" cellspacing="0" cellpadding="0" align="center">
+          <tbody>
+              <tr>
+                  <td class="esd-stripe" esd-custom-block-id="1754" align="center" style = "background-color :#fed7e0; padding-top: 5%">
+                      <table class="es-content-body" width="800" cellspacing="0" cellpadding="0" bgcolor="#ffffff"
+                          align="center">
                           <tbody>
                               <tr>
                                   <td class="esd-structure es-p5t es-p5b es-p15r es-p15l" align="left"
-                                      style="display: flex; justify-content: center;">
+                                      style="display: flex; justify-content: center; margin-top:15px;">
                                       <!--[if mso]><table width="570" cellpadding="0" cellspacing="0"><tr><td width="180" valign="top"><![endif]-->
                                       <table class="es-left" cellspacing="0" cellpadding="0" align="center">
                                           <tbody>
@@ -736,9 +750,9 @@ button.es-button {
                                                                       align="center"
                                                                       style="font-size:0; text-align: center;">
                                                                       <a href="/" target="_blank"><img
-                                                                              src="https://avatars.githubusercontent.com/u/103843110?s=200&v=4"
+                                                                              src="https://i.pinimg.com/736x/c5/21/04/c52104c88250fa258f8e86aebf7ccd07.jpg"
                                                                               alt="logo" title="logo"
-                                                                              width="118"></a>
+                                                                              width="140"></a>
                                                                   </td>
                                                               </tr>
                                                           </tbody>
@@ -750,18 +764,6 @@ button.es-button {
                                   </td>
                               </tr>
                           </tbody>
-                      </table>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-
-      <table class="es-content" cellspacing="0" cellpadding="0" align="center">
-          <tbody>
-              <tr>
-                  <td class="esd-stripe" esd-custom-block-id="1754" align="center">
-                      <table class="es-content-body" width="800" cellspacing="0" cellpadding="0" bgcolor="#ffffff"
-                          align="center">
                           <tbody>
                               <tr>
                                   <td class="esd-structure es-p10t es-p10b es-p20r es-p20l"
@@ -776,8 +778,11 @@ button.es-button {
                                                           <tbody>
                                                               <tr>
                                                                   <td class="esd-block-text es-p10t es-p15b"
-                                                                      align="center">
-                                                                      <h1>${
+                                                                      align="center"
+                                                                      >
+                                                                      <h1
+                                                                      style ="color :#b55b5b"
+                                                                      >${
                                                                         order.status ===
                                                                         3
                                                                           ? 'Canceled Order'
@@ -805,10 +810,10 @@ button.es-button {
                                                               <tr>
                                                                   <td class="esd-block-button es-p15t es-p10b"
                                                                       align="center"><span class="es-button-border"
-                                                                          style="border-radius: 5px; background: #d48344 none repeat scroll 0% 0%; border-style: solid; border-color: #2cb543; border-top: 0px solid #2cb543; border-bottom: 0px solid #2cb543;"><a
+                                                                          style="border-radius: 5px; background: #b55b5b none repeat scroll 0% 0%; border-style: solid; border-color: #2cb543; border-top: 0px solid #2cb543; border-bottom: 0px solid #2cb543;"><a
                                                                               href="https://viewstripo.email/"
                                                                               class="es-button" target="_blank"
-                                                                              style="font-size: 16px; border-top-width: 10px; border-bottom-width: 10px; border-radius: 5px; background: #d48344 none repeat scroll 0% 0%; border-color: #d48344;">View
+                                                                              style="font-size: 16px; border-top-width: 10px; border-bottom-width: 10px; border-radius: 5px; background: #b55b5b none repeat scroll 0% 0%; border-color: #b55b5b;">View
                                                                               order status</a></span></td>
                                                               </tr>
                                                           </tbody>
@@ -841,9 +846,9 @@ button.es-button {
                                                   <tr>
                                                       <td class="es-m-p20b esd-container-frame" width="800" align="left">
                                                           <table
-                                                              style="background-color: #fef9ef; border-color: #efefef; border-collapse: separate; border-width: 1px 0px 1px 1px; border-style: solid;"
+                                                              style="background-color: #fee9e9; border-color: #efefef; border-collapse: separate; border-width: 1px 0px 1px 1px; border-style: solid;"
                                                               width="100%" cellspacing="0" cellpadding="0"
-                                                              bgcolor="#fef9ef">
+                                                              bgcolor="#fed7e0">
                                                               <tbody>
                                                                   <tr>
                                                                       <td class="esd-block-text es-p20t es-p10b es-p20r es-p20l"
@@ -925,9 +930,9 @@ button.es-button {
                                                   <tr>
                                                       <td class="esd-container-frame" width="800" align="left">
                                                           <table
-                                                              style="background-color: #fef9ef; border-collapse: separate; border-width: 1px; border-style: solid; border-color: #efefef;"
+                                                              style="background-color: #fee9e9; border-collapse: separate; border-width: 1px; border-style: solid; border-color: #efefef;"
                                                               width="100%" cellspacing="0" cellpadding="0"
-                                                              bgcolor="#fef9ef">
+                                                              bgcolor="#fed7e0">
                                                               <tbody>
                                                                   <tr>
                                                                       <td class="esd-block-text es-p20t es-p10b es-p20r es-p20l"
@@ -984,8 +989,8 @@ button.es-button {
                           align="center">
                           <tbody>
                               <tr>
-                                  <td class="esd-structure es-p10t es-p10b es-p20r es-p20l"
-                                      esd-general-paddings-checked="false" align="left">
+                                  <td class="esd-structure es-p10t es-p10b es-p20r es-p20l "
+                                      esd-general-paddings-checked="false" align="left" >
                                       <!--[if mso]><table width="560" cellpadding="0" cellspacing="0"><tr><td width="270" valign="top"><![endif]-->
                                       <table class="es-left" cellspacing="0" cellpadding="0" align="left">
                                           <tbody>
@@ -1188,308 +1193,7 @@ button.es-button {
                                   </td>
                               </tr>
                               <table class="es-content" cellspacing="0" cellpadding="0" align="center">
-          <tbody>
-              <tr>
-                  <td class="esd-stripe" esd-custom-block-id="1758" align="center">
-                      <table class="es-content-body" width="800" cellspacing="0" cellpadding="0" bgcolor="#ffffff"
-                          align="center">
-                          <tbody>
-                              <tr>
-                                  <td class="esd-structure es-p10t es-p10b es-p20r es-p20l"
-                                      esd-general-paddings-checked="false" align="left">
-                                      <!--[if mso]><table width="560" cellpadding="0" cellspacing="0"><tr><td width="270" valign="top"><![endif]-->
-                                      <table class="es-left" cellspacing="0" cellpadding="0" align="left">
-                                          <tbody>
-                                              <tr>
-                                                  <td class="es-m-p0r es-m-p20b esd-container-frame" width="270"
-                                                      valign="top" align="center">
-                                                      <table width="100%" cellspacing="0" cellpadding="0">
-                                                          <tbody>
-                                                              <tr>
-                                                                  <td class="esd-block-text es-p20l" align="left">
-                                                                      <h4>APPRECIATION GIFT</h4>
-                                                                  </td>
-                                                              </tr>
-                                                          </tbody>
-                                                      </table>
-                                                  </td>
-                                              </tr>
-                                          </tbody>
-                                      </table>
-                                      <!--[if mso]></td><td width="20"></td><td width="270" valign="top"><![endif]-->
-                                      <table cellspacing="0" cellpadding="0" align="right">
-                                          <tbody>
-                                              <tr>
-                                                  <td class="esd-container-frame" width="370" align="left">
-                                                      <table width="100%" cellspacing="0" cellpadding="0">
-                                                          <tbody>
-                                                              <tr>
-                                                                  <td class="esd-block-text" align="left">
-                                                                      <table style="width: 100%;"
-                                                                          class="cke_show_border" cellspacing="1"
-                                                                          cellpadding="1" border="0">
-                                                                          <tbody>
-                                                                              <tr>
-                                                                                  <td><span
-                                                                                          style="font-size:13px;">NAME</span>
-                                                                                  </td>
-                                                                                  <td style="text-align: center;"
-                                                                                      width="100"><span
-                                                                                          style="font-size:13px;"><span
-                                                                                              style="line-height: 100%;">QTY</span></span>
-                                                                                  </td>
-                                                                                  <td style="text-align: center;"
-                                                                                      width="150"><span
-                                                                                          style="font-size:13px;"><span
-                                                                                              style="line-height: 100%;">POINT</span></span>
-                                                                                  </td>
-                                                                              </tr>
-                                                                          </tbody>
-                                                                      </table>
-                                                                  </td>
-                                                              </tr>
-                                                          </tbody>
-                                                      </table>
-                                                  </td>
-                                              </tr>
-                                          </tbody>
-                                      </table>
-                                      <!--[if mso]></td></tr></table><![endif]-->
-                                  </td>
-                              </tr>
-
-                              <tr>
-                                  <td class="esd-structure es-p20r es-p20l" esd-general-paddings-checked="false"
-                                      align="left">
-                                      <table width="100%" cellspacing="0" cellpadding="0">
-                                          <tbody>
-                                              <tr>
-                                                  <td class="esd-container-frame" width="560" valign="top"
-                                                      align="center">
-                                                      <table width="100%" cellspacing="0" cellpadding="0">
-                                                          <tbody>
-                                                              <tr>
-                                                                  <td class="esd-block-spacer es-p10b" align="center"
-                                                                      style="font-size:0">
-                                                                      <table width="100%" height="100%"
-                                                                          cellspacing="0" cellpadding="0" border="0">
-                                                                          <tbody>
-                                                                              <tr>
-                                                                                  <td
-                                                                                      style="border-bottom: 1px solid #efefef; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; height: 1px; width: 100%; margin: 0px;">
-                                                                                  </td>
-                                                                              </tr>
-                                                                          </tbody>
-                                                                      </table>
-                                                                  </td>
-                                                              </tr>
-                                                          </tbody>
-                                                      </table>
-                                                  </td>
-                                              </tr>
-                                          </tbody>
-                                      </table>
-                                  </td>
-                              </tr>
-
-                              <tr>
-                                  <td class="esd-structure es-p5t es-p10b es-p20r es-p20l"
-                                      esd-general-paddings-checked="false" align="left">
-                                      <!--[if mso]><table width="560" cellpadding="0" cellspacing="0"><tr><td width="178" valign="top"><![endif]-->
-                                      ${
-                                        order.gifts
-                                          ? order.gifts.reduce((acc, item) => {
-                                              return `                                <tr>
-                                          <td class="esd-structure es-p5t es-p10b es-p20r es-p20l"
-                                              esd-general-paddings-checked="false" align="left">
-                                              <!--[if mso]><table width="560" cellpadding="0" cellspacing="0"><tr><td width="178" valign="top"><![endif]-->
-                                              <table class="es-left" cellspacing="0" cellpadding="0" align="left">
-                                                  <tbody>
-                                                      <tr>
-                                                          <td class="es-m-p0r es-m-p20b esd-container-frame" width="178"
-                                                              valign="top" align="center">
-                                                              <table width="100%" cellspacing="0" cellpadding="0">
-                                                                  <tbody>
-                                                                      <tr>
-                                                                          <td class="esd-block-image" align="center"
-                                                                              style="font-size:0">
-                                                                              <a href="https://viewstripo.email"
-                                                                                  target="_blank"><img
-                                                                                      src=${item.image}
-                                                                                      alt="Natural Balance L.I.D., sale 30%"
-                                                                                      class="adapt-img"
-                                                                                      title="Natural Balance L.I.D., sale 30%"
-                                                                                      width="125"></a>
-                                                                          </td>
-                                                                      </tr>
-                                                                  </tbody>
-                                                              </table>
-                                                          </td>
-                                                      </tr>
-                                                  </tbody>
-                                              </table>
-                                              <!--[if mso]></td><td width="20"></td><td width="362" valign="top"><![endif]-->
-                                              <table cellspacing="0" cellpadding="0" align="right">
-                                                  <tbody>
-                                                      <tr>
-                                                          <td class="esd-container-frame" width="462" align="left">
-                                                              <table width="100%" cellspacing="0" cellpadding="0">
-                                                                  <tbody>
-                                                                      <tr>
-                                                                          <td class="esd-block-text" align="left">
-                                                                              <p><br></p>
-                                                                              <table style="width: 100%;"
-                                                                                  class="cke_show_border" cellspacing="1"
-                                                                                  cellpadding="1" border="0">
-                                                                                  <tbody>
-                                                                                      <tr>
-                                                                                          <td>${item.name}</td>
-                                                                                          <td style="text-align: center;"
-                                                                                              width="100">${item.quantity}</td>
-                                                                                          <td style="text-align: center;"
-                                                                                              width="150">${item.point}</td>
-                                                                                      </tr>
-                                                                                  </tbody>
-                                                                              </table>
-                                                                              <p><br></p>
-                                                                          </td>
-                                                                      </tr>
-                                                                  </tbody>
-                                                              </table>
-                                                          </td>
-                                                      </tr>
-                                                  </tbody>
-                                              </table>
-                                              <!--[if mso]></td></tr></table><![endif]-->
-                                          </td>
-                                      </tr>${acc}`;
-                                            }, '')
-                                          : ''
-                                      }
-                                  </td>
-                              </tr>
-
-                              <tr>
-                                  <td class="esd-structure es-p20r es-p20l" esd-general-paddings-checked="false"
-                                      align="left">
-                                      <table width="100%" cellspacing="0" cellpadding="0">
-                                          <tbody>
-                                              <tr>
-                                                  <td class="esd-container-frame" width="560" valign="top"
-                                                      align="center">
-                                                      <table width="100%" cellspacing="0" cellpadding="0">
-                                                          <tbody>
-                                                              <tr>
-                                                                  <td class="esd-block-spacer es-p10b" align="center"
-                                                                      style="font-size:0">
-                                                                      <table width="100%" height="100%"
-                                                                          cellspacing="0" cellpadding="0" border="0">
-                                                                          <tbody>
-                                                                              <tr>
-                                                                                  <td
-                                                                                      style="border-bottom: 1px solid #efefef; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; height: 1px; width: 100%; margin: 0px;">
-                                                                                  </td>
-                                                                              </tr>
-                                                                          </tbody>
-                                                                      </table>
-                                                                  </td>
-                                                              </tr>
-                                                          </tbody>
-                                                      </table>
-                                                  </td>
-                                              </tr>
-                                          </tbody>
-                                      </table>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td class="esd-structure es-p5t es-p30b es-p40r es-p20l" align="left">
-                                      <table width="100%" cellspacing="0" cellpadding="0">
-                                          <tbody>
-                                              <tr>
-                                                  <td class="esd-container-frame" width="540" valign="top"
-                                                      align="center">
-                                                      <table width="100%" cellspacing="0" cellpadding="0">
-                                                          <tbody>
-                                                              <tr>
-                                                                  <td class="esd-block-text" align="right">
-                                                                      <table style="width: 500px;"
-                                                                          class="cke_show_border" cellspacing="1"
-                                                                          cellpadding="1" border="0" align="right">
-                                                                          <tbody>
-                                                                              <tr>
-                                                                                  <td
-                                                                                      style="text-align: right; font-size: 18px; line-height: 150%;">
-                                                                                      Subtotal (${
-                                                                                        order
-                                                                                          .products
-                                                                                          .length
-                                                                                      } Items):</td>
-                                                                                  <td
-                                                                                      style="text-align: right; font-size: 18px; line-height: 150%;">
-                                                                                      ${
-                                                                                        order.total_product_cost
-                                                                                      } USD</td>
-                                                                              </tr>
-                                                                              <tr>
-                                                                                  <td
-                                                                                      style="text-align: right; font-size: 18px; line-height: 150%;">
-                                                                                      Flat-rate Shipping:</td>
-                                                                                  <td
-                                                                                      style="text-align: right; font-size: 18px; line-height: 150%; color: #d48344;">
-                                                                                      <strong>${
-                                                                                        order.shipping_cost ||
-                                                                                        order.shipping_cost ===
-                                                                                          0
-                                                                                          ? `${order.shipping_cost} USD`
-                                                                                          : 'Will be notified later'
-                                                                                      }</strong></td>
-                                                                              </tr>
-                                                                              <tr>
-                                                                                  <td
-                                                                                      style="text-align: right; font-size: 18px; line-height: 150%;">
-                                                                                      Discount:</td>
-                                                                                  <td
-                                                                                      style="text-align: right; font-size: 18px; line-height: 150%;">
-                                                                                      ${
-                                                                                        order.discount
-                                                                                      } USD</td>
-                                                                              </tr>
-                                                                              <tr>
-                                                                                  <td
-                                                                                      style="text-align: right; font-size: 18px; line-height: 150%;">
-                                                                                      <strong>Order Total:</strong>
-                                                                                  </td>
-                                                                                  <td
-                                                                                      style="text-align: right; font-size: 18px; line-height: 150%; color: #d48344;">
-                                                                                      <strong>${
-                                                                                        order.shipping_cost
-                                                                                          ? order.total_product_cost +
-                                                                                            order.shipping_cost -
-                                                                                            order.discount
-                                                                                          : order.total_product_cost -
-                                                                                            order.discount
-                                                                                      } USD</strong>
-                                                                                  </td>
-                                                                              </tr>
-                                                                          </tbody>
-                                                                      </table>
-                                                                      <p style="line-height: 150%;"><br></p>
-                                                                  </td>
-                                                              </tr>
-                                                          </tbody>
-                                                      </table>
-                                                  </td>
-                                              </tr>
-                                          </tbody>
-                                      </table>
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                  </td>
-              </tr>
-          </tbody>
+       
       </table>
 
       <table cellpadding="0" cellspacing="0" class="es-footer" align="center">
@@ -1511,7 +1215,7 @@ button.es-button {
                                                                   <td class="esd-block-image es-m-p0l es-m-txt-c"
                                                                       align="center" style="font-size:0">
                                                                       <a href target="_blank"><img
-                                                                              src="https://avatars.githubusercontent.com/u/103843110?s=200&v=4"
+                                                                              src="https://i.pinimg.com/736x/c5/21/04/c52104c88250fa258f8e86aebf7ccd07.jpg"
                                                                               alt="logo" title="Petshop logo"
                                                                               width="60px"></a>
                                                                   </td>
@@ -1568,7 +1272,6 @@ button.es-button {
 </body>
 
 </html>
-
 
 `;
 }

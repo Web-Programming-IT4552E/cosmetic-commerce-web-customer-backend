@@ -138,7 +138,7 @@ export function generateAccountVerificationSuccessTemplate(
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <!-- LOGO -->
       <tr>
-        <td bgcolor="#fef5e4" align="center">
+        <td bgcolor="#fed7e0" align="center">
           <table
             border="0"
             cellpadding="0"
@@ -157,7 +157,7 @@ export function generateAccountVerificationSuccessTemplate(
         </td>
       </tr>
       <tr>
-        <td bgcolor="#fef5e4" align="center" style="padding: 0px 10px 0px 10px">
+        <td bgcolor="#fed7e0" align="center" style="padding: 0px 10px 0px 10px">
           <table
             border="0"
             cellpadding="0"
@@ -182,7 +182,7 @@ export function generateAccountVerificationSuccessTemplate(
                 "
               >
                 <img
-                  src="https://avatars.githubusercontent.com/u/103843110?s=200&v=4"
+                  src="https://i.pinimg.com/736x/c5/21/04/c52104c88250fa258f8e86aebf7ccd07.jpg"
                   width="125"
                   height="120"
                   style="display: block; border: 0px"
@@ -192,7 +192,7 @@ export function generateAccountVerificationSuccessTemplate(
                     font-size: 50px;
                     font-weight: 400;
                     margin: 3;
-                    color: #e99b0a;
+                    color: #b55b5b;
                   "
                 >
                   Account Activated Successfully !
@@ -279,7 +279,7 @@ export function generateAccountVerificationSuccessTemplate(
           >
             <tr>
               <td
-                bgcolor="#fef5e4"
+                bgcolor="#fed7e0"
                 align="center"
                 style="
                   padding: 30px 30px 30px 30px;
@@ -305,7 +305,7 @@ export function generateAccountVerificationSuccessTemplate(
                   <a
                     href="https://candleinthewindshop.xyz/contact/"
                     target="_blank"
-                    style="color: #e6b42d"
+                    style="color: #b55b5b"
                     >You can contact with us here</a
                   >
                 </p>

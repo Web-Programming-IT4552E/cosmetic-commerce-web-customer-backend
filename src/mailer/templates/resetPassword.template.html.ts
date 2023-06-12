@@ -139,7 +139,7 @@ export function generateResetPasswordTemplate(
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <!-- LOGO -->
       <tr>
-        <td bgcolor="#fef5e4" align="center">
+        <td bgcolor="#fed7e0" align="center">
           <table
             border="0"
             cellpadding="0"
@@ -158,7 +158,7 @@ export function generateResetPasswordTemplate(
         </td>
       </tr>
       <tr>
-        <td bgcolor="#fef5e4" align="center" style="padding: 0px 10px 0px 10px">
+        <td bgcolor="#fed7e0" align="center" style="padding: 0px 10px 0px 10px">
           <table
             border="0"
             cellpadding="0"
@@ -183,7 +183,7 @@ export function generateResetPasswordTemplate(
                 "
               >
                 <img
-                  src="https://avatars.githubusercontent.com/u/103843110?s=200&v=4"
+                  src="https://i.pinimg.com/736x/c5/21/04/c52104c88250fa258f8e86aebf7ccd07.jpg"
                   width="125"
                   height="120"
                   style="display: block; border: 0px"
@@ -193,7 +193,7 @@ export function generateResetPasswordTemplate(
                     font-size: 48px;
                     font-weight: 400;
                     margin: 2;
-                    color: #e99b0a;
+                    color: #b55b5b;
                   "
                 >
                   Reset Password Confirmation
@@ -245,7 +245,7 @@ export function generateResetPasswordTemplate(
                           <td
                             align="center"
                             style="border-radius: 3px"
-                            bgcolor="#e9880a"
+                            bgcolor="#b55b5b"
                           >
                             <a
                               href="${verify_token_site}"
@@ -253,13 +253,13 @@ export function generateResetPasswordTemplate(
                               style="
                                 font-size: 20px;
                                 font-family: 'Helvetica', Arial, sans-serif;
-                                color: #e9880a;
+                                color: #b55b5b;
                                 text-decoration: none;
                                 color: #ffffff;
                                 text-decoration: none;
                                 padding: 15px 25px;
                                 border-radius: 2px;
-                                border: 1px solid #ffa73b;
+                                border: 1px solid #b55b5b;
                                 display: inline-block;
                               "
                               >Reset Password</a
@@ -307,7 +307,7 @@ export function generateResetPasswordTemplate(
                 "
               >
                 <p style="margin: 0">
-                  <a href="${verify_token_site}" target="_blank" style="color: #e6b42d"
+                  <a href="${verify_token_site}" target="_blank" style="color: #b55b5b"
                     >${verify_token_site}</a
                   >
                 </p>
@@ -367,7 +367,7 @@ export function generateResetPasswordTemplate(
           >
             <tr>
               <td
-                bgcolor="#fef5e4"
+                bgcolor="#fed7e0"
                 align="center"
                 style="
                   padding: 30px 30px 30px 30px;
@@ -393,7 +393,7 @@ export function generateResetPasswordTemplate(
                   <a
                     href="https://candleinthewindshop.xyz/contact/"
                     target="_blank"
-                    style="color: #e99b0a"
+                    style="color: #b55b5b"
                     >You can contact with us here</a
                   >
                 </p>

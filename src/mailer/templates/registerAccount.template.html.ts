@@ -138,7 +138,7 @@ export function generateRegisterTemple(
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <!-- LOGO -->
       <tr>
-        <td bgcolor="#fef5e4" align="center">
+        <td bgcolor="#fed7e0" align="center">
           <table
             border="0"
             cellpadding="0"
@@ -157,7 +157,7 @@ export function generateRegisterTemple(
         </td>
       </tr>
       <tr>
-        <td bgcolor="#fef5e4" align="center" style="padding: 0px 10px 0px 10px">
+        <td bgcolor="#fed7e0" align="center" style="padding: 0px 10px 0px 10px">
           <table
             border="0"
             cellpadding="0"
@@ -182,7 +182,7 @@ export function generateRegisterTemple(
                 "
               >
                 <img
-                  src="https://avatars.githubusercontent.com/u/103843110?s=200&v=4"
+                  src="https://i.pinimg.com/736x/c5/21/04/c52104c88250fa258f8e86aebf7ccd07.jpg"
                   width="125"
                   height="120"
                   style="display: block; border: 0px"
@@ -192,7 +192,7 @@ export function generateRegisterTemple(
                     font-size: 50px;
                     font-weight: 400;
                     margin: 2;
-                    color: #e99b0a;
+                    color: #b55b5b;
                   "
                 >
                   Welcome !
@@ -245,7 +245,7 @@ export function generateRegisterTemple(
                           <td
                             align="center"
                             style="border-radius: 3px"
-                            bgcolor="#e9880a"
+                            bgcolor="#b55b5b"
                           >
                             <a
                               href="${verify_token_site}"
@@ -259,7 +259,7 @@ export function generateRegisterTemple(
                                 text-decoration: none;
                                 padding: 15px 25px;
                                 border-radius: 2px;
-                                border: 1px solid #ffa73b;
+                                border: 1px solid #b55b5b;
                                 display: inline-block;
                               "
                               >Activate Account</a
@@ -307,7 +307,7 @@ export function generateRegisterTemple(
                 "
               >
                 <p style="margin: 0">
-                  <a href="${verify_token_site}" target="_blank" style="color: #e6b42d"
+                  <a href="${verify_token_site}" target="_blank" style="color: #b55b5b"
                     >${verify_token_site}</a
                   >
                 </p>
@@ -367,7 +367,7 @@ export function generateRegisterTemple(
           >
             <tr>
               <td
-                bgcolor="#fef5e4"
+                bgcolor="#fed7e0"
                 align="center"
                 style="
                   padding: 30px 30px 30px 30px;
@@ -393,7 +393,7 @@ export function generateRegisterTemple(
                   <a
                     href="https://candleinthewindshop.xyz/contact/"
                     target="_blank"
-                    style="color: #e99b0a"
+                    style="color: #b55b5b"
                     >You can contact with us here</a
                   >
                 </p>
