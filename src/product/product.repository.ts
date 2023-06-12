@@ -30,12 +30,13 @@ export class ProductRepository {
       .find(query)
       .skip((page - 1) * limit)
       .limit(limit)
+      .populate('category')
       .lean()
       .exec();
   }
 
   async getProductById(id: string): Promise<Product | null> {
-    return this.productModel.findById(id).lean().exec();
+    return this.productModel.findById(id).populate('category').lean().exec();
   }
 
   async getProductsByIdList(idList: string[]): Promise<Product[]> {
