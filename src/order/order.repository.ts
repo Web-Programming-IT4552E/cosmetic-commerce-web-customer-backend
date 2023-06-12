@@ -1,5 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
+import { FilterQuery } from 'mongoose';
 import { CreateOrderDto } from './dtos/create-order.dto';
 import { OrderStatus } from './enums/order-status.enum';
 import { Order } from './schemas/order.schema';
@@ -39,5 +40,28 @@ export class OrderRepository {
       total_product_cost: totalProductCost,
       discount,
     });
+  }
+
+  async countNumberOfOrderWithQuery(
+    query: FilterQuery<Order>,
+  ): Promise<number> {
+    return this.orderModel.countDocuments(query);
+  }
+
+  async getOrderList(
+    query: FilterQuery<Order>,
+    page: number,
+    limit: number,
+  ): Promise<Order[]> {
+    return this.orderModel
+      .find(query)
+      .skip((page - 1) * limit)
+      .limit(limit)
+      .lean()
+      .exec();
+  }
+
+  async findOneOrder(query: FilterQuery<Order>): Promise<Order> {
+    return this.orderModel.findOne(query).lean().exec();
   }
 }

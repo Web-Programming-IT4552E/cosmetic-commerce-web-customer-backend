@@ -10,6 +10,7 @@ import { OrderProduct } from './schemas/order-product.schema';
 import { MailService } from '../mailer/mail.service';
 import { LoyalCustomerCreateOrderDto } from './dtos/loyalCustomerCreateOrder.dto';
 import { CreateOrderProduct } from './dtos/create-order-product.dto';
+import { GetListOrderQuery } from './dtos/getListOrderQuery.dto';
 
 @Injectable()
 export class OrderService {
@@ -122,5 +123,38 @@ export class OrderService {
       quantitySet,
       productList,
     };
+  }
+
+  async getListOrder(
+    getListOrderQuery: GetListOrderQuery,
+    customer_email: string,
+  ) {
+    const { page, limit, status } = { ...getListOrderQuery };
+    const query = {
+      customer_email,
+    };
+    if (status) {
+      Object.assign(query, {
+        status: { $in: status.split(',').map((x) => +x) },
+      });
+    }
+    const data = await this.orderRepository.getOrderList(query, page, limit);
+    const total = await this.orderRepository.countNumberOfOrderWithQuery(query);
+    return {
+      paginationInfo: {
+        page,
+        limit,
+        total,
+      },
+      data,
+    };
+  }
+
+  async getDetailOfAnOrder(order_id: string, customer_email: string) {
+    const query = {
+      customer_email,
+      _id: order_id,
+    };
+    return this.orderRepository.findOneOrder(query);
   }
 }
