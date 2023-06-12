@@ -9,8 +9,8 @@ import { ShippingAddressDetail } from '../../shipping_address/schemas/shipping_a
 @modelOptions({
   schemaOptions: {
     timestamps: {
-      createdAt: 'create_time',
-      updatedAt: 'updated_at',
+      createdAt: 'created_time',
+      updatedAt: 'updated_time',
     },
   },
 })
