@@ -1,5 +1,11 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import {
+  BadRequestException,
+  Controller,
+  Get,
+  Param,
+  Query,
+} from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtDecodedData } from 'src/common/decorators/auth.decorator';
 import { JwtPayload } from 'src/auth/dtos/jwt-payload.dto';
 import { DiscountCodeService } from './discount_code.service';
@@ -10,6 +16,9 @@ import { GetListDiscountCodeQueryDto } from './dtos/getListDiscountCode.query.dt
 export class DiscountCodeController {
   constructor(private readonly discountCodeService: DiscountCodeService) {}
 
+  @ApiOperation({
+    description: 'get List Discount Code',
+  })
   @ApiBearerAuth()
   @Get()
   getListDiscountCodes(
@@ -22,6 +31,9 @@ export class DiscountCodeController {
     );
   }
 
+  @ApiOperation({
+    description: 'Get discount code detail',
+  })
   @ApiBearerAuth()
   @Get(':id')
   findOne(
@@ -31,6 +43,29 @@ export class DiscountCodeController {
     return this.discountCodeService.getDetailDiscountCode(
       discount_code_id,
       jwtPayload.userId,
+    );
+  }
+
+  @ApiOperation({
+    description:
+      'Get discount code amount when applying, param is code field, not objectId',
+  })
+  @ApiBearerAuth()
+  @Get('/tryApplying/:discount_code')
+  async getApplyingDiscountAmountOnOrder(
+    @Param('discount_code') discount_code: string,
+    @Query('total_product_cost') total_product_cost: string,
+    @JwtDecodedData() jwtPayload: JwtPayload,
+  ) {
+    if (!total_product_cost || Number(total_product_cost) < 0) {
+      throw new BadRequestException(
+        'total_product_cost is required and must be >=0',
+      );
+    }
+    return this.discountCodeService.tryApplyingDiscountAmountOnOrder(
+      discount_code,
+      jwtPayload.userId,
+      Number(total_product_cost),
     );
   }
 }
