@@ -58,7 +58,36 @@ export class DiscountCodeService {
     };
   }
 
-  getDetailDiscountCode(discount_code_id: string) {
-    return `This action returns a #${discount_code_id} discountCode`;
+  getDetailDiscountCode(discount_code_id: string, user_id: string) {
+    const query = {
+      _id: discount_code_id,
+      applied_user: {
+        $elemMatch: {
+          user_id: new Types.ObjectId(user_id),
+          remaining: { $gt: 0 },
+        },
+      },
+      expired_time: { $gt: new Date() },
+      total_remaining: { $gt: 0 },
+    };
+    const selectOptions = {
+      name: 1,
+      code: 1,
+      min_order_value: 1,
+      description: 1,
+      total_remaining: 1,
+      expired_time: 1,
+      applied_user: {
+        $filter: {
+          input: '$applied_user',
+          as: 'out',
+          cond: { $eq: ['$$out.user_id', new Types.ObjectId(user_id)] },
+        },
+      },
+    };
+    return this.discountCodeRepository.getDiscountCodeDetailByID(
+      query,
+      selectOptions,
+    );
   }
 }

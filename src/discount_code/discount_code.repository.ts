@@ -28,8 +28,11 @@ export class DiscountCodeRepository {
     return this.discountCodeModel.countDocuments(query);
   }
 
-  async getDiscountCodeDetailByID(query: FilterQuery<DiscountCode>) {
-    return this.discountCodeModel.findOne(query).lean();
+  async getDiscountCodeDetailByID(
+    query: FilterQuery<DiscountCode>,
+    selectOptions: Record<string, any>,
+  ) {
+    return this.discountCodeModel.findOne(query).select(selectOptions).lean();
   }
 
   async createDiscountCode(createDiscountCodeDto: any) {

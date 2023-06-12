@@ -24,7 +24,13 @@ export class DiscountCodeController {
 
   @ApiBearerAuth()
   @Get(':id')
-  findOne(@Param('id') discount_code_id: string) {
-    return this.discountCodeService.getDetailDiscountCode(discount_code_id);
+  findOne(
+    @Param('id') discount_code_id: string,
+    @JwtDecodedData() jwtPayload: JwtPayload,
+  ) {
+    return this.discountCodeService.getDetailDiscountCode(
+      discount_code_id,
+      jwtPayload.userId,
+    );
   }
 }
