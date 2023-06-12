@@ -64,24 +64,26 @@ export class OrderService {
         user_id,
         { total_product_cost: totalCost },
       );
-    const createdOrder = await this.orderRepository.createOrderWithDiscount(
-      {
-        ...createOrderDto,
-        customer_email,
-      },
-      productList.map<OrderProduct>((product) => {
-        const productId = product._id.toHexString();
-        return {
-          product_id: productId,
-          name: product.name,
-          price: product.price,
-          quantity: quantitySet[productId],
-          image: product.image,
-        };
-      }),
-      totalCost,
-      Number(discount_amount),
-    );
+    const createdOrder =
+      await this.orderRepository.createOrderWithDiscountAndUserId(
+        {
+          ...createOrderDto,
+          customer_email,
+        },
+        user_id,
+        productList.map<OrderProduct>((product) => {
+          const productId = product._id.toHexString();
+          return {
+            product_id: productId,
+            name: product.name,
+            price: product.price,
+            quantity: quantitySet[productId],
+            image: product.image,
+          };
+        }),
+        totalCost,
+        Number(discount_amount),
+      );
     await this.mailService.sendNewOrderCreatedEmail(
       customer_email,
       createdOrder,

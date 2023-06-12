@@ -26,14 +26,16 @@ export class OrderRepository {
     });
   }
 
-  async createOrderWithDiscount(
+  async createOrderWithDiscountAndUserId(
     createOrderDto: CreateOrderDto,
+    user_id:string,
     products: OrderProduct[],
     totalProductCost: number,
     discount: number,
   ) {
     return this.orderModel.create({
       ...createOrderDto,
+      user_id,
       order_id: (await this.orderModel.estimatedDocumentCount()) + 1,
       products,
       status: OrderStatus.NEW,
