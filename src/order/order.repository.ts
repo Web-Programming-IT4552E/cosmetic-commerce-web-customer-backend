@@ -24,4 +24,20 @@ export class OrderRepository {
       total_product_cost: totalProductCost,
     });
   }
+
+  async createOrderWithDiscount(
+    createOrderDto: CreateOrderDto,
+    products: OrderProduct[],
+    totalProductCost: number,
+    discount: number,
+  ) {
+    return this.orderModel.create({
+      ...createOrderDto,
+      order_id: (await this.orderModel.estimatedDocumentCount()) + 1,
+      products,
+      status: OrderStatus.NEW,
+      total_product_cost: totalProductCost,
+      discount,
+    });
+  }
 }

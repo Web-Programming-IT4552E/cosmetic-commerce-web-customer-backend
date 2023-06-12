@@ -1,8 +1,15 @@
 import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
-import { ApiBadRequestResponse, ApiTags } from '@nestjs/swagger';
-import { Public } from 'src/common/decorators/auth.decorator';
+import {
+  ApiBadRequestResponse,
+  ApiBearerAuth,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
+import { JwtDecodedData, Public } from 'src/common/decorators/auth.decorator';
+import { JwtPayload } from 'src/auth/dtos/jwt-payload.dto';
 import { CreateOrderDto } from './dtos/create-order.dto';
 import { OrderService } from './order.service';
+import { LoyalCustomerCreateOrderDto } from './dtos/loyalCustomerCreateOrder.dto';
 
 @ApiTags('order')
 @Controller('order')
@@ -13,7 +20,7 @@ export class OrderController {
     description: 'Invalid body, check error for more info',
   })
   @Public()
-  @Post('create')
+  @Post('/public')
   createOrder(@Body() createOrderDto: CreateOrderDto) {
     try {
       const { products } = createOrderDto;
@@ -27,5 +34,22 @@ export class OrderController {
     } catch (e) {
       throw new BadRequestException(e.message);
     }
+  }
+
+  @ApiOperation({
+    description: 'create Orders for loyal customer',
+  })
+  @ApiBearerAuth()
+  @Post('/loyal')
+  async loyalCustomerCreateOrder(
+    @Body()
+    loyalCustomerCreateOrderDto: LoyalCustomerCreateOrderDto,
+    @JwtDecodedData() jwtPayload: JwtPayload,
+  ) {
+    return this.orderService.loyalCustomerCreateOrder(
+      jwtPayload.userId,
+      jwtPayload.email,
+      loyalCustomerCreateOrderDto,
+    );
   }
 }

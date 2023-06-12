@@ -38,4 +38,16 @@ export class ProductService {
   async getProductsByIdList(idList: string[]) {
     return this.productRepository.getProductsByIdList(idList);
   }
+
+  async findAndUpdateProductStockById(
+    product_id: string,
+    stock_consumed: number,
+  ) {
+    return this.productRepository.findOneProductAndUpdate(
+      {
+        _id: product_id,
+      },
+      { $inc: { stock: -stock_consumed } },
+    );
+  }
 }

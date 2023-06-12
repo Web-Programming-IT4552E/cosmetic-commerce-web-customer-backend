@@ -10,7 +10,10 @@ import { DiscountType } from '../enums/discount-type.enum';
     },
   },
 })
-@modelOptions({ schemaOptions: { collection: 'discount_codes' } })
+@modelOptions({
+  options: { allowMixed: 1 },
+  schemaOptions: { collection: 'discount_codes' },
+})
 export class DiscountCode {
   @prop({ required: true })
   name: string;

@@ -1,6 +1,11 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
-import { MongooseQueryOptions, Types } from 'mongoose';
+import {
+  FilterQuery,
+  MongooseQueryOptions,
+  Types,
+  UpdateQuery,
+} from 'mongoose';
 import { Product } from './schemas/product.schema';
 
 @Injectable()
@@ -40,5 +45,12 @@ export class ProductRepository {
       })
       .lean()
       .exec();
+  }
+
+  async findOneProductAndUpdate(
+    query: FilterQuery<Product>,
+    updateOptions: UpdateQuery<Product>,
+  ): Promise<Product | null> {
+    return this.productModel.findOneAndUpdate(query, updateOptions);
   }
 }
