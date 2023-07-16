@@ -63,7 +63,7 @@ export class CustomerService {
         userCreated.fullname,
         `${this.configService.get(
           'WEBSITE_DOMAIN_PATH',
-        )}/user/register/verify/${userCreated.active_token}`,
+        )}/auth/register/verify/${userCreated.active_token}`,
       );
     }
     return userCreated;
@@ -143,7 +143,7 @@ export class CustomerService {
       user.fullname,
       `${this.configService.get(
         'WEBSITE_DOMAIN_PATH',
-      )}/account/forgot-password/verify/${otp_active_token}`,
+      )}/auth/forgot-password/${otp_active_token}`,
     );
   }
 

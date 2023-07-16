@@ -226,7 +226,7 @@ export function generateRegisterTemple(
               >
                 <p style="margin: 0">
                   Dear ${user_name}, <br />
-                  Thanks for signing up to keep in touch with Candle In The Wind Shop. <br />
+                  Thanks for signing up to keep in touch with Uray Store. <br />
                   Please click at the button to confirm and activate your account 
                 </p>
               </td>
@@ -328,7 +328,7 @@ export function generateRegisterTemple(
               >
                 <p style="margin: 0">
                   <br />
-                 If you did not signing up at Candle In The Wind Shop website, maybe there was some confusion, please skip this email.
+                 If you did not signing up at Uray Store website, maybe there was some confusion, please skip this email.
                 </p>
               </td>
             </tr>
@@ -346,7 +346,7 @@ export function generateRegisterTemple(
                   line-height: 25px;
                 "
               >
-                <p style="margin: 0">Cheers, <br />Candle In The Wind Shop Team</p>
+                <p style="margin: 0">Cheers, <br />Uray Store Team</p>
               </td>
             </tr>
           </table>
