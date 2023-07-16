@@ -796,13 +796,13 @@ button.es-button {
                                                                       <p style="color: #333333;">${
                                                                         order.status ===
                                                                         0
-                                                                          ? 'You will receive an email when your items delivered to the shipping unit  ! If you have any questions, mail us candleinthewindshop@gmail.com.'
+                                                                          ? 'You will receive an email when your items delivered to the shipping unit  ! If you have any questions, mail us uray.store@gmail.com.'
                                                                           : order.status ===
                                                                             3
-                                                                          ? 'Your order has been canceled ! If you have any questions, mail us candleinthewindshop@gmail.com.'
+                                                                          ? 'Your order has been canceled ! If you have any questions, mail us uray.store@gmail.com.'
                                                                           : order.status ===
                                                                             1
-                                                                          ? 'Your items have been delivered to the shipping unit. If you have any questions, mail us candleinthewindshop@gmail.com.'
+                                                                          ? 'Your items have been delivered to the shipping unit. If you have any questions, mail us uray.store@gmail.com.'
                                                                           : 'Your items have been shipped successfully. If you have any questions, mail us  candleinthewindshop@gmail.com.'
                                                                       }</p>
                                                                   </td>
@@ -1353,8 +1353,7 @@ button.es-button {
                                                               <tr>
                                                                   <td class="esd-block-text es-m-txt-c" align="left"
                                                                       style="transform: translateY(4px); text-align: center;">
-                                                                      <p>Please contact us by email. Candle in the
-                                                                          wind will bring pleasure to your house!<br>
+                                                                      <p>Please contact us by email. Uray Store will bring pleasure to your house!<br>
                                                                       </p>
                                                                   </td>
                                                               </tr>
@@ -1362,7 +1361,7 @@ button.es-button {
                                                                   <td class="esd-block-text es-p5t es-m-txt-c"
                                                                       align="center">
                                                                       <p><a target="_blank"
-                                                                              href="candleinthewindshop@gmail.com">candleinthewindshop@gmail.com</a>
+                                                                              href="candleinthewindshop@gmail.com">uray.store@gmail.com</a>
                                                                       </p>
                                                                   </td>
                                                               </tr>
@@ -1371,7 +1370,7 @@ button.es-button {
                                                                       class="esd-block-text es-p10t es-m-txt-c"
                                                                       style="text-align: center;">
                                                                       <p style="line-height: 150%; font-size: 14px;">
-                                                                          @Candleinthewind</p>
+                                                                          @Uray.store</p>
                                                                   </td>
                                                               </tr>
                                                           </tbody>

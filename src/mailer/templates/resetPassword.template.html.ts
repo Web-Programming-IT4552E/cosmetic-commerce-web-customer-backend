@@ -134,7 +134,6 @@ export function generateResetPasswordTemplate(
         overflow: hidden;
       "
     >
-      Candle In The Wind đã ghi nhận b
     </div>
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <!-- LOGO -->
@@ -226,7 +225,7 @@ export function generateResetPasswordTemplate(
                 "
               >
                 <p style="margin: 0">
-                  Hello ${user_name}, <br />Candle In The Wind Shop have received your password reset request
+                  Hello ${user_name}, <br />Uray Store have received your password reset request
                   for account ${user_email}. Please click the button below to confirm this action
                 </p>
               </td>
@@ -346,7 +345,7 @@ export function generateResetPasswordTemplate(
                   line-height: 25px;
                 "
               >
-                <p style="margin: 0">Cheers, <br />Candle In The Wind Shop Team</p>
+                <p style="margin: 0">Cheers, <br />Uray Store Team</p>
               </td>
             </tr>
           </table>
@@ -391,7 +390,7 @@ export function generateResetPasswordTemplate(
                 </h2>
                 <p style="margin: 0">
                   <a
-                    href="https://candleinthewindshop.xyz/contact/"
+                    href="https://www.uray.store/"
                     target="_blank"
                     style="color: #b55b5b"
                     >You can contact with us here</a

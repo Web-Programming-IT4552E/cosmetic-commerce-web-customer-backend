@@ -226,13 +226,13 @@ export function generateAccountVerificationSuccessTemplate(
               >
                 <p style="margin: 0">
                   Hello ${user_name}, <br />
-                  You have successfully activated your account at Candle In The Wind Shop !<br />
+                  You have successfully activated your account at Uray Store !<br />
                   From now on, you'll get regular updates on faresale and special offers from us.<br />
                   <br>
                   
                   Thank for joining with us. 
                   <br><br>
-              <p style="margin: 0">Cheers, <br />Candle In The Wind Shop Team</p>
+              <p style="margin: 0">Cheers, <br />Uray Store Team</p>
 
                 </p>
               </td>
@@ -303,7 +303,7 @@ export function generateAccountVerificationSuccessTemplate(
                 </h2>
                 <p style="margin: 0">
                   <a
-                    href="https://candleinthewindshop.xyz/contact/"
+                    href="https://www.uray.store/"
                     target="_blank"
                     style="color: #b55b5b"
                     >You can contact with us here</a

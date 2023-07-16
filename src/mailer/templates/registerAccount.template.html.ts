@@ -391,7 +391,7 @@ export function generateRegisterTemple(
                 </h2>
                 <p style="margin: 0">
                   <a
-                    href="https://candleinthewindshop.xyz/contact/"
+                    href="https://www.uray.store/"
                     target="_blank"
                     style="color: #b55b5b"
                     >You can contact with us here</a
