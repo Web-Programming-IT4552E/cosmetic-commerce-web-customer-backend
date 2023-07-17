@@ -8,13 +8,23 @@ export class ProductService {
   constructor(private readonly productRepository: ProductRepository) {}
 
   async getAllProducts(getListProductQuery: getListProductsQueryDto) {
-    const { page, limit, name, category } = { ...getListProductQuery };
+    const { page, limit, name, category, price_start, price_end, search } = {
+      ...getListProductQuery,
+    };
     const query: MongooseQueryOptions = {};
     if (name) {
       Object.assign(query, { name });
     }
     if (category) {
       Object.assign(query, { category: { $in: category.split(',') } });
+    }
+    if (price_start && price_end) {
+      Object.assign(query, { price: { $gte: price_start, $lte: price_end } });
+    }
+    if (search) {
+      Object.assign(query, {
+        name: { $regex: `.*${search}.*`, $options: 'i' },
+      });
     }
     const total = await this.productRepository.countNumberOfProductWithQuery(
       query,

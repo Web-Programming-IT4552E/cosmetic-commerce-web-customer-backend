@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { ApiProperty } from '@nestjs/swagger';
-import { IsOptional, IsString } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 import { PaginationQueryDto } from 'src/common/dtos/paginationQuery.dto';
 
 export class getListProductsQueryDto extends PaginationQueryDto {
@@ -23,4 +23,25 @@ export class getListProductsQueryDto extends PaginationQueryDto {
   @IsOptional()
   @IsString()
   category: string;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsOptional()
+  @IsNumber()
+  price_start: number;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsOptional()
+  @IsNumber()
+  price_end: number;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsOptional()
+  @IsNumber()
+  search: string;
 }
