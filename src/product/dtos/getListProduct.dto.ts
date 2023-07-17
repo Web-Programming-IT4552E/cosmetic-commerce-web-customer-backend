@@ -42,6 +42,6 @@ export class getListProductsQueryDto extends PaginationQueryDto {
     required: false,
   })
   @IsOptional()
-  @IsNumber()
+  @IsString()
   search: string;
 }
